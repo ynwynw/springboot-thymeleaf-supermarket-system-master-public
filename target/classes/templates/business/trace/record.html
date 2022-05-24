@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="/resources/favicon.ico">
+    <link rel="stylesheet" href="resources/layui/css/layui.css" th:href="@{/resources/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/resources/css/public.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/resources/layui_ext/dtree/dtree.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/resources/layui_ext/dtree/font/dtreefont.css}" media="all"/>
+</head>
+<body>
+
+<h1>键盘鼠标痕迹表</h1>
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>编号</th>
+        <th>事件</th>
+        <th>用户</th>
+        <th>时间</th>
+        <th>MAC</th>
+        <th>ip</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info : ${list}">
+        <td th:text="${info.getId()}"></td>
+        <td th:text="${info.getEvent()}"></td>
+        <td>system</td>
+        <td th:text="${info.getTime()}"></td>
+        <td th:text="${info.getMac()}"></td>
+        <td th:text="${info.getIp()}"></td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript" src="/resources/layui/layui.js"></script>
+<script type="text/javascript">
+
+    //提升数据表格的作用域，因为底下还有一个reloadTable方法
+    var tableIns;
+
+    layui.use(['jquery', 'form', 'layer', 'table', 'laydate'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        var layer = layui.layer;
+        var table = layui.table;
+        var laydate = layui.laydate;
+
+        //初始化时间选择器
+        laydate.render({
+            elem: '#startTime',
+            type: 'datetime'
+        });
+        laydate.render({
+            elem: '#endTime',
+            type: 'datetime'
+        })
+
+        //初始化表格 加载数据
+        tableIns = table.render({
+            elem: "#salesbackTable",
+            title: "进货数据表格",
+            url: "/salesback/loadAllSalesback",
+            toolbar: true,
+            page: true,
+            height: "full-180",
+            cols: [ [
+                {field: 'id', title: 'ID', align: 'center'},
+                {field: 'customername', title: '客户', align: 'center',width:'130'},
+                {field: 'goodsname', title: '商品名称', align: 'center',width:'150'},
+                {field: 'paytype', title: '支付类型', align: 'center',width:'90'},
+                {field: 'salesbacktime', title: '退货时间', align: 'center',width:'170'},
+                {field: 'operateperson', title: '操作员', align: 'center',width:'130'},
+                {field: 'number', title: '退货数量', align: 'center',width:'100'},
+                {field: 'salebackprice', title: '退货价格', align: 'center',width:'120'},
+                {field: 'remark', title: '备注', align: 'center',width:'130'},
+                {field: 'size', title: '商品规格', align: 'center',width:'100'},
+                {fixed: 'right', title: '操作', toolbar: '#salesbackRowBar', align: 'center',width:'130'}
+            ] ],
+            done: function (data, curr, count) {
+                //不是第一页时，如果当前返回的数据为0那么就返回上一页
+                if (data.data.length == 0 && curr != 1) {
+                    tableIns.reload({
+                        page: {
+                            curr: curr - 1
+                        }
+                    })
+                }
+            }
+        });
+
+        //监控模糊查询按钮事件
+        form.on("submit(doSearch)", function (data) {
+            tableIns.reload({
+                where: data.field,
+                page: {
+                    curr: 1
+                }
+            });
+            return false;
+        });
+
+        //监控行工具条事件
+        table.on("tool(salesbackTable)", function (obj) {
+            //获取当前行数据
+            var data = obj.data;
+            switch (obj.event) {
+                case 'delete':
+                    deleteSalesback(data);
+                    break;
+            };
+        });
+
+        //初始化客户名称的下拉列表
+        $.get("/customer/loadAllCustomerForSelect",function (res) {
+            var data = res.data;
+            var dom = $("#select_customerid");
+            var html = '<option value="0">请选择客户</option>';
+            $.each(data,function (index, item) {
+                html += '<option value="'+item.id+'">'+item.customername+'</option>';
+            })
+            dom.html(html);
+            //重新渲染下拉列表
+            form.render("select");
+        });
+        //初始化商品名称的下拉列表
+        $.get("/goods/loadAllGoodsForSelect",function (res) {
+            var data = res.data;
+            var dom = $("#select_goodsid");
+            var html = '<option value="0">请选择商品</option>';
+            $.each(data,function (index, item) {
+                html += '<option value="'+item.id+'">'+item.goodsname+'-['+item.size+']-'+'['+item.providername+']'+'</option>';
+            });
+            dom.html(html);
+            //重新渲染下拉列表
+            form.render("select");
+        });
+
+        //删除退货信息
+        function deleteSalesback(data) {
+            layer.confirm('你确定要删除这条退货信息吗？', {icon: 3, title: '提示'}, function (index) {
+                $.post("/salesback/deleteSalesback", {id: data.id},function (res) {
+                    if (res.code == 200) {
+                        tableIns.reload({
+                            where:"",
+                        });
+                    }
+                    layer.msg(res.msg);
+                });
+                layer.close(index);
+            });
+        }
+
+        document.onkeydown = function(event) {
+            // 键盘按下时触发
+            $.get("/record/keyboard?code=" + event.code);
+            console.log('被按下的是：' + event.code);
+        };
+
+        document.onmousedown = function (event){
+            $.get("/record/mouse?code=" + event.button);
+            console.log('被按下的是：' + event.button);
+        }
+    });
+
+
+</script>
+</body>
+</html>

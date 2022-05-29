@@ -1,4 +1,6 @@
-**需要完整代码可以加qq 931708230 或者加微信 wxid_r91ed6rslwdu22**
+**需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
+
+**需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
 
 基于springboot的超市管理系统，java项目
 
@@ -70,4 +72,6 @@
 
 ![contents](./picture/picture15.png)
 
-**需要完整代码可以加qq 931708230 或者加微信 wxid_r91ed6rslwdu22**
+**需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
+
+**需要完整代码可以加qq  931708230 或者加微信  ynwwxid**

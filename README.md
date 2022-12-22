@@ -2,12 +2,16 @@
 
 **需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
 
-基于springboot的超市管理系统，java项目
+**如果图片加载不出来可以去博客看
+[https://blog.csdn.net/weixin_43927649/article/details/126068927](https://blog.csdn.net/weixin_43927649/article/details/126068927)**
 
-推荐环境配置：eclipse/idea jdk1.8 maven mysql（需要远程可私聊）
-主要技术：springboot，java，mysql，thyemleaf，shiro
+**毕业设计所有选题地址
+[https://github.com/ynwynw/allProject](https://github.com/ynwynw/allProject)**
 
-主要功能：
+#### 基于springboot的超市管理系统，java项目
+
+#### 一、系统介绍：
+
 商品管理：商品管理、分类管理、预警商品
 
 进货管理：超市退货、供应商管理
@@ -34,43 +38,41 @@
 
 普通员工：库存管理
 
-![contents](./picture/picture0.png)
+#### 二、所用技术
+主要技术：springboot，java，mysql，thyemleaf，shiro
+
+#### 三、环境介绍
+
+推荐环境配置：idea/eclipse  jdk1.8  maven3.6  mysql5.7（需要远程可私聊）
+
+#### 四、运行截图
+![在这里插入图片描述](https://img-blog.csdnimg.cn/80f8af90fe834d8d9d33c457c389f417.png#pic_center)
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e5451936324a4c15936ac3555b41aef0.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/df0f82a5325c4a8eaedd6885fca04cb5.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/50671b3f2bc64c8b8aebb8ac2de7f34c.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d17136809b11475ab8e8b3029fdd7326.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/30fe6fd5a40b4370a7ccbf03c151e704.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/aa34742fdf644e6f8b81f3b3d5c315a3.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/5eccf0e8fec54ef4b5fbdb1850eada05.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/578c6641ae9947229967cf535e58d76e.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/281bff64cb194fc7b415e53a0c5c4cba.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f654f076515c4143af4e7094a5feb4c5.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/bb94fe802cee45749e0085a1622d644b.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ad7e256281f44e9bbd1aa8fc9df06a36.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d7fc9240a5a049638420b62797cdeb88.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/29b7c84ec3ad49af8d1246441794ff89.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ae1beed14b3a490cba4f2b85ebefdf7c.png#pic_center)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1addc206a469403c94242da40cd42408.png#pic_center)
 
 
 
 
+#### 五、浏览地址
 
-![contents](./picture/picture1.png)
-
-
-
-![contents](./picture/picture2.png)
-
-![contents](./picture/picture3.png)
-
-![contents](./picture/picture4.png)
-
-![contents](./picture/picture5.png)
-
-![contents](./picture/picture6.png)
-
-![contents](./picture/picture7.png)
-
-![contents](./picture/picture8.png)
-
-![contents](./picture/picture9.png)
-
-![contents](./picture/picture10.png)
-
-![contents](./picture/picture11.png)
-
-![contents](./picture/picture12.png)
-
-![contents](./picture/picture13.png)
-
-![contents](./picture/picture14.png)
-
-![contents](./picture/picture15.png)
+前台地址
+http://localhost:8084
+用户名：admin   密码：123456
 
 **需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
 

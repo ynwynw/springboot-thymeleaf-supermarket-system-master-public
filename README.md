@@ -2,10 +2,13 @@
 
 **需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
 
-**如果图片加载不出来可以去博客看
+**博客地址：
 [https://blog.csdn.net/weixin_43927649/article/details/126068927](https://blog.csdn.net/weixin_43927649/article/details/126068927)**
 
-**毕业设计所有选题地址
+**视频演示：
+[B站视频演示](https://www.bilibili.com/video/BV14g411J7w6)**
+
+**毕业设计所有选题地址：
 [https://github.com/ynwynw/allProject](https://github.com/ynwynw/allProject)**
 
 #### 基于springboot的超市管理系统，java项目

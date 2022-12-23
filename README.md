@@ -39,7 +39,7 @@
 普通员工：库存管理
 
 #### 二、所用技术
-主要技术：springboot，java，mysql，thyemleaf，shiro
+主要技术：springboot，java，mysql，thyemleaf，shiro,mybatisplus
 
 #### 三、环境介绍
 
